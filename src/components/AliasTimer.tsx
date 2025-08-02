@@ -181,20 +181,37 @@ const AliasTimer = () => {
 
   const resetTimer = () => {
     const newTime = timer.mode === 'special' ? settings.specialTurnTime : settings.turnTime;
-    const nextWord = timer.mode === 'special' ? (timer.currentWord < 5 ? timer.currentWord + 1 : 1) : 1;
     
     setTimer(prev => ({
       ...prev,
       isRunning: false,
       currentTime: newTime,
       phase: 'turn',
+      isFinished: false
+    }));
+  };
+
+  const nextWord = () => {
+    const newWord = timer.currentWord < 5 ? timer.currentWord + 1 : 1;
+    
+    setTimer(prev => ({
+      ...prev,
+      isRunning: false,
+      currentTime: settings.specialTurnTime,
+      phase: 'turn',
       isFinished: false,
-      currentWord: nextWord
+      currentWord: newWord
     }));
   };
 
   const updateTimerToSettings = () => {
-    const newTime = timer.phase === 'turn' ? settings.turnTime : settings.guessTime;
+    let newTime;
+    if (timer.mode === 'special') {
+      newTime = settings.specialTurnTime;
+    } else {
+      newTime = timer.phase === 'turn' ? settings.turnTime : settings.guessTime;
+    }
+    
     setTimer(prev => ({
       ...prev,
       currentTime: newTime,
@@ -349,8 +366,8 @@ const AliasTimer = () => {
           )}
         </Button>
 
-        {/* Reset Button */}
-        <div className="mt-6">
+        {/* Reset and Next Word Buttons */}
+        <div className="mt-6 flex gap-4 justify-center">
           <Button
             onClick={resetTimer}
             variant="outline"
@@ -360,6 +377,18 @@ const AliasTimer = () => {
             <RotateCcw className="w-5 h-5 mr-2" />
             איפוס
           </Button>
+          
+          {timer.mode === 'special' && (
+            <Button
+              onClick={nextWord}
+              variant="outline"
+              size="lg"
+              className="rounded-full px-8 py-4"
+            >
+              <RefreshCw className="w-5 h-5 mr-2" />
+              למילה הבאה
+            </Button>
+          )}
         </div>
       </div>
     </div>
