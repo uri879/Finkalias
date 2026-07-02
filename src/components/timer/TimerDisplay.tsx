@@ -25,7 +25,11 @@ export function TimerDisplay({ currentTime, phase, mode, currentWord }: TimerDis
     <div className="text-center">
       {/* Phase Indicator */}
       <div className="mb-4">
-        <span className="text-2xl font-bold text-primary">
+        <span
+          className="text-2xl font-bold text-primary"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           {mode === 'special'
             ? `מילה ${currentWord}`
             : phase === 'turn'
@@ -40,6 +44,9 @@ export function TimerDisplay({ currentTime, phase, mode, currentWord }: TimerDis
           'text-8xl font-bold mb-8 transition-colors duration-300',
           getTimerColor(currentTime),
         )}
+        aria-live="off"
+        aria-label={`זמן נותר: ${formatTime(currentTime)}`}
+        role="timer"
       >
         {formatTime(currentTime)}
       </div>

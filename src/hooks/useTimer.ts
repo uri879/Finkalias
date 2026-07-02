@@ -153,5 +153,29 @@ export function useTimer(settings: TimerSettings) {
     }));
   };
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.isContentEditable
+      ) {
+        return;
+      }
+      if (e.code === 'Space') {
+        e.preventDefault();
+        timer.isRunning ? pause() : start();
+      } else if (e.key.toLowerCase() === 'r') {
+        reset();
+      } else if (e.key.toLowerCase() === 'n' && timer.mode === 'special') {
+        nextWord();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [timer.isRunning, timer.mode, start, pause, reset, nextWord]);
+
   return { timer, start, pause, reset, nextWord, toggleMode, updateTimerToSettings };
 }
