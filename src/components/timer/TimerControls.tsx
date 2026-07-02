@@ -43,12 +43,12 @@ export function TimerControls({
       >
         {isRunning ? (
           <>
-            <Pause className="w-12 h-12 mr-2" />
+            <Pause className="w-12 h-12 ms-2" />
             השהה
           </>
         ) : (
           <>
-            <Play className="w-12 h-12 mr-2" />
+            <Play className="w-12 h-12 ms-2" />
             {getButtonText(isFinished, mode, phase)}
           </>
         )}
@@ -62,7 +62,7 @@ export function TimerControls({
           size="lg"
           className="rounded-full px-8 py-4"
         >
-          <RotateCcw className="w-5 h-5 mr-2" />
+          <RotateCcw className="w-5 h-5 ms-2" />
           איפוס
         </Button>
 
@@ -73,7 +73,7 @@ export function TimerControls({
             size="lg"
             className="rounded-full px-8 py-4"
           >
-            <RefreshCw className="w-5 h-5 mr-2" />
+            <RefreshCw className="w-5 h-5 ms-2" />
             למילה הבאה
           </Button>
         )}

@@ -20,9 +20,9 @@ const AliasTimer = () => {
         variant="outline"
         size="sm"
         onClick={toggleMode}
-        className="absolute top-4 left-4 text-primary hover:text-primary/80"
+        className="absolute top-4 start-4 text-primary hover:text-primary/80"
       >
-        <RefreshCw className="h-4 w-4 mr-2" />
+        <RefreshCw className="h-4 w-4 ms-2" />
         {timer.mode === 'regular' ? 'תור מיוחד' : 'תור רגיל'}
       </Button>
 
@@ -31,7 +31,7 @@ const AliasTimer = () => {
         variant="ghost"
         size="icon"
         onClick={() => setShowSettings(true)}
-        className="absolute top-4 right-4 text-primary hover:text-primary/80"
+        className="absolute top-4 end-4 text-primary hover:text-primary/80"
       >
         <Settings className="h-6 w-6" />
       </Button>
