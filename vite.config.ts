@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "placeholder.svg", "robots.txt"],
+      includeAssets: ["favicon.png", "favicon-16x16.png", "placeholder.svg", "robots.txt"],
       manifest: {
         name: "טיימר אליאס",
         short_name: "טיימר אליאס",
