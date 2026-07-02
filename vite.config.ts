@@ -5,7 +5,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/Finkalias/",
+  base: "/",
   server: {
     host: "::",
     port: 8080,
@@ -22,8 +22,8 @@ export default defineConfig(({ mode }) => ({
         theme_color: "#e63946",
         background_color: "#e63946",
         display: "standalone",
-        scope: "/Finkalias/",
-        start_url: "/Finkalias/",
+        scope: "/",
+        start_url: "/",
         orientation: "portrait",
         lang: "he",
         dir: "rtl",
