@@ -14,8 +14,17 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.png", "favicon-16x16.png", "placeholder.svg", "robots.txt"],
+      includeAssets: [
+        "favicon.png",
+        "favicon-16x16.png",
+        "apple-touch-icon-180x180.png",
+        "apple-touch-icon-167x167.png",
+        "apple-touch-icon-152x152.png",
+        "placeholder.svg",
+        "robots.txt",
+      ],
       manifest: {
+        id: "/",
         name: "טיימר אליאס",
         short_name: "טיימר אליאס",
         description: "טיימר דיגיטלי למשחק אליאס",
@@ -28,10 +37,10 @@ export default defineConfig(({ mode }) => ({
         lang: "he",
         dir: "rtl",
         icons: [
-          { src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },
-          { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" },
+          { src: "/pwa-192x192.png", sizes: "192x192", type: "image/png" },
+          { src: "/pwa-512x512.png", sizes: "512x512", type: "image/png" },
           {
-            src: "pwa-maskable-512x512.png",
+            src: "/pwa-maskable-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
