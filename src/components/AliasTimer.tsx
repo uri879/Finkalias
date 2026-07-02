@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Settings, RefreshCw } from 'lucide-react';
 import { useTimer } from '@/hooks/useTimer';
 import { usePersistedSettings } from '@/hooks/usePersistedSettings';
+import { useInstallPrompt } from '@/hooks/useInstallPrompt';
 import { TimerDisplay } from '@/components/timer/TimerDisplay';
 import { TimerControls } from '@/components/timer/TimerControls';
 import { SettingsPanel } from '@/components/timer/SettingsPanel';
@@ -12,6 +13,7 @@ const AliasTimer = () => {
   const { timer, start, pause, reset, nextWord, toggleMode, updateTimerToSettings } =
     useTimer(settings);
   const [showSettings, setShowSettings] = useState(false);
+  const { isInstallable, prompt: triggerInstall } = useInstallPrompt();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col items-center justify-center p-4">
@@ -25,6 +27,18 @@ const AliasTimer = () => {
         <RefreshCw className="h-4 w-4 ms-2" />
         {timer.mode === 'regular' ? 'תור מיוחד' : 'תור רגיל'}
       </Button>
+
+      {/* Install Button (PWA) */}
+      {isInstallable && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={triggerInstall}
+          className="absolute top-4 end-20 text-primary"
+        >
+          התקן
+        </Button>
+      )}
 
       {/* Settings Button */}
       <Button
